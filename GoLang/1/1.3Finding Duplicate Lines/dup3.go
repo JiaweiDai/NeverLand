@@ -12,6 +12,13 @@ func main() {
 
 	for _, filename := range os.Args[1:]{
 		data, err := ioutil.ReadFile(filename)
+		/**
+		 * ReadFile returns a byte slice that must be converted into a string so it can be split by strings.Split
+		 *
+		 * Under the couvers, bufio.Scanner, ioutil.ReadFile, and ioutil.WriteFile use the read and Write methods of *os.File,
+		 * but it's rare that most programmers need to access those lower-level routines directly. The higher-level functions 
+		 * like those from bufio and io/ioutil are easier to use.
+		 */
 		if err != nil{
 			fmt.Fprintf(os.Stderr, "dup3: %v\n",err)
 			continue
